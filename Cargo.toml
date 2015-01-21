@@ -5,6 +5,7 @@ version = "0.0.1"
 authors = ["Robert Clipsham <robert@octarineparrot.com>"]
 homepage = "http://info.iet.unipi.it/~luigi/netmap/"
 repository = "https://github.com/libpnet/rust-netmap"
+license = "BSD-2-Clause"
 description = "Bindings to netmap - the fast packet I/O framework"
 readme = "README.md"
 keywords = ["networking", "packet", "bindings"]
