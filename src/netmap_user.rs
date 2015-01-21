@@ -120,6 +120,10 @@ pub struct nm_desc {
     pub msg: [c_char; NM_ERRBUF_SIZE],
 }
 
+// FIXME These are probably incorrect
+unsafe impl Send for *mut nm_desc {}
+unsafe impl Sync for *mut nm_desc {}
+
 #[inline(always)]
 pub unsafe fn P2NMD<T>(p: *mut T) -> *mut nm_desc {
     p as *mut nm_desc
