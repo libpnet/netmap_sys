@@ -16,3 +16,9 @@ build = "build.rs"
 
 name = "rust-netmap"
 crate_type = [ "rlib", "dylib" ]
+
+[features]
+
+default = []
+netmap_with_libs = []
+
