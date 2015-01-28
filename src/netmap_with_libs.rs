@@ -32,7 +32,7 @@ pub struct nm_desc {
     pub mem: *mut c_void,
     pub memsize: u32,
     pub done_mmap: c_int,
-    pub nifp: *const netmap_if,
+    pub nifp: *mut netmap_if,
     pub first_tx_ring: u16,
     pub last_tx_ring: u16,
     pub cur_tx_ring: u16,
@@ -58,8 +58,8 @@ pub struct nm_desc {
     pub msg: [c_char; NM_ERRBUF_SIZE],
 }
 
-// FIXME These are probably incorrect
 unsafe impl Send for *mut nm_desc {}
+// FIXME I believe this is correct, but should double check
 unsafe impl Sync for *mut nm_desc {}
 
 #[inline(always)]
