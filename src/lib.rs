@@ -1,3 +1,4 @@
+#![feature(libc)]
 #![allow(unstable, bad_style, raw_pointer_derive)]
 extern crate libc;
 
