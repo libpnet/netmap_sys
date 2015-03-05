@@ -29,14 +29,14 @@ error: could not find native static library `rust_netmap_user`, perhaps an -L fl
 
 You should check the following things:
 
- 1) You have clang installed
+ 1. You have clang installed
     * If you do not have clang installed, and do not wish to, you can modify
       `build.rs` to use gcc instead (untested, but it should work).
- 2) Make sure that `/usr/include/net/netmap.h` and
+ 2. Make sure that `/usr/include/net/netmap.h` and
     `/usr/include/net/netmap_user.h` both exist. If they do not, you should
     check your netmap installation. You can either manually add these files or
     symlinks to the, or change the paths searched in `build.rs`.
- 3) If you still have issues, please file an issue in the bug tracker, along
+ 3. If you still have issues, please file an issue in the bug tracker, along
  with the output of `cargo build -v`, your operating system and distribution,
  how you installed netmap, and the output of `clang -DNETMAP_WITH_LIBS
  -Dstatic= -Dinline= -x c -fPIC -O2 -c /usr/include/net/netmap_user.h -o
