@@ -1,7 +1,7 @@
 [package]
 
-name = "rust-netmap"
-version = "0.0.7"
+name = "netmap_sys"
+version = "0.0.8"
 authors = ["Robert Clipsham <robert@octarineparrot.com>"]
 homepage = "http://info.iet.unipi.it/~luigi/netmap/"
 repository = "https://github.com/libpnet/rust-netmap"
@@ -14,7 +14,7 @@ build = "build.rs"
 
 [lib]
 
-name = "rust_netmap"
+name = "netmap_sys"
 crate_type = [ "rlib", "dylib" ]
 
 [features]
