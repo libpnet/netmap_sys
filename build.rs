@@ -1,5 +1,6 @@
 // netmap doesn't provide these functions as a library, so we cheat, to save porting them manually
 // to Rust. This is a very ugly hack.
+#![feature(old_io, os)]
 #![allow(unstable)]
 use std::old_io::Command;
 use std::os;
