@@ -1,17 +1,16 @@
 // netmap doesn't provide these functions as a library, so we cheat, to save porting them manually
 // to Rust. This is a very ugly hack.
-#![feature(old_io, os)]
-#![allow(unstable)]
-use std::old_io::Command;
-use std::os;
+use std::process::Command;
+use std::env;
 
 fn main() {
-    let out_dir = os::getenv("OUT_DIR").unwrap();
+    let out_dir = env::var("OUT_DIR").unwrap();
 
-    if let Some(_) = os::getenv("CARGO_FEATURE_NETMAP_WITH_LIBS") {
+    if let Some(_) = env::var_os("CARGO_FEATURE_NETMAP_WITH_LIBS") {
         Command::new("clang").args(&["-DNETMAP_WITH_LIBS", "-Dstatic=", "-Dinline=",
                                      "-x", "c",
                                      "-fPIC",
+                                     "-g",
                                      "-O2",
                                      "-c", "/usr/include/net/netmap_user.h",
                                      "-o"])
