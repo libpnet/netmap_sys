@@ -10,7 +10,7 @@ pub const NETMAP_MAX_API: c_int = 15;
 pub const NM_CACHE_ALIGN: c_int = 128;
 
 #[repr(C)]
-#[derive(Copy)]
+#[derive(Clone, Copy)]
 pub struct netmap_slot {
     pub buf_idx: u32,
     pub len: u16,
@@ -52,11 +52,17 @@ pub struct netmap_ring {
     pub slot: [netmap_slot; 0], // FIXME Check struct size/field alignment
 }
 
+impl Clone for netmap_ring {
+    fn clone(&self) -> netmap_ring {
+        *self
+    }
+}
+
 pub const NR_TIMESTAMP: c_int = 0x0002;
 pub const NR_FORWARD: c_int = 0x0004;
 
 #[repr(C)]
-#[derive(Copy)]
+#[derive(Clone, Copy)]
 pub struct netmap_if {
     pub ni_name: [c_char; IFNAMSIZ],
     pub ni_version: u32,
@@ -76,7 +82,7 @@ pub const NI_PRIV_MEM: c_int = 0x1;
 pub const SIZEOF_NR_NAME: usize = IFNAMSIZ;
 
 #[repr(C)]
-#[derive(Copy)]
+#[derive(Clone, Copy)]
 pub struct nmreq {
     pub nr_name: [c_char; IFNAMSIZ],
     pub nr_version: u32,
@@ -154,5 +160,11 @@ pub const NM_IFRDATA_LEN: usize = 256;
 pub struct nm_ifreq {
     pub nifr_name: [c_char; IFNAMSIZ],
     pub data: [c_char; NM_IFRDATA_LEN],
+}
+
+impl Clone for nm_ifreq {
+    fn clone(&self) -> nm_ifreq {
+        *self
+    }
 }
 
