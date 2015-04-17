@@ -7,7 +7,7 @@ extern {
 }
 
 #[repr(C)]
-#[derive(Copy)]
+#[derive(Clone, Copy)]
 pub struct nm_pkthdr {
     pub ts: timeval,
     pub caplen: u32,
@@ -15,7 +15,7 @@ pub struct nm_pkthdr {
 }
 
 #[repr(C)]
-#[derive(Copy)]
+#[derive(Clone, Copy)]
 pub struct nm_stat {
     pub ps_recv: c_uint,
     pub ps_drop: c_uint,
@@ -56,6 +56,12 @@ pub struct nm_desc {
 
     pub st: nm_stat,
     pub msg: [c_char; NM_ERRBUF_SIZE],
+}
+
+impl Clone for nm_desc {
+    fn clone(&self) -> nm_desc {
+        *self
+    }
 }
 
 #[inline(always)]
