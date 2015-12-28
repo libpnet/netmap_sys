@@ -1,5 +1,5 @@
 #![feature(libc)]
-#![allow(bad_style, raw_pointer_derive)]
+#![allow(bad_style)]
 extern crate libc;
 
 pub mod netmap;

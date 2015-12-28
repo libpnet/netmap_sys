@@ -85,7 +85,7 @@ pub unsafe fn nm_pkt_copy(_src: *const c_void, _dst: *mut c_void, mut l: c_int) 
     let mut dst = _dst as *mut u64;
 
     if unlikely(l > 1024) {
-        memcpy(dst as *mut c_void, src as *mut c_void, l as u64);
+        memcpy(dst as *mut c_void, src as *mut c_void, l as usize);
         return;
     }
 
