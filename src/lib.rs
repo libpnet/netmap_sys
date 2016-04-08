@@ -1,4 +1,3 @@
-#![feature(libc)]
 #![allow(bad_style)]
 extern crate libc;
 
