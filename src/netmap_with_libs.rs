@@ -120,3 +120,8 @@ extern {
     pub fn nm_nextpkt(d: *mut nm_desc, hdr: *mut nm_pkthdr) -> *mut c_uchar;
 }
 
+#[test]
+fn check_linking() {
+	use std::ptr::null;
+	unsafe { nm_open(b"lo\0" as *const u8 as *const i8, null(), 0, null()) };
+}
