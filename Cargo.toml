@@ -22,3 +22,5 @@ crate_type = [ "rlib", "dylib" ]
 default = []
 netmap_with_libs = []
 
+[dependencies]
+libc = "0.2"
