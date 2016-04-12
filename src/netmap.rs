@@ -78,8 +78,6 @@ pub struct netmap_if {
 
 pub const NI_PRIV_MEM: c_int = 0x1;
 
-pub const SIZEOF_NR_NAME: usize = IFNAMSIZ;
-
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct nmreq {
