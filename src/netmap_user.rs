@@ -24,13 +24,13 @@ pub unsafe fn NETMAP_IF<U>(_base: *mut U, _ofs: isize) -> *mut netmap_if {
 // FIXME It's possible the pointer arithmetic here uses the wrong integer types.
 #[inline(always)]
 pub unsafe fn NETMAP_TXRING(nifp: *mut netmap_if, index: isize) -> *mut netmap_ring {
-    let ptr = (&mut (*nifp).ring_ofs as *mut [isize; 0]) as *mut c_void;
+    let ptr = (&mut (*nifp).ring_ofs as *mut [isize; 0]) as *mut isize;
     _NETMAP_OFFSET(nifp, *(ptr.offset(index) as *mut isize))
 }
 
 #[inline(always)]
 pub unsafe fn NETMAP_RXRING(nifp: *mut netmap_if, index: isize) -> *mut netmap_ring {
-    let ptr = (&mut (*nifp).ring_ofs as *mut [isize; 0]) as *mut c_void;
+    let ptr = (&mut (*nifp).ring_ofs as *mut [isize; 0]) as *mut isize;
     _NETMAP_OFFSET(nifp, *(ptr.offset(index + (*nifp).ni_tx_rings as isize + 1) as *mut isize))
 }
 
