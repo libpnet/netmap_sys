@@ -140,9 +140,9 @@ pub const NIOCGINFO: c_ulong = 3225184657;
 #[cfg(target_os = "linux")]
 pub const NIOCREGIF: c_ulong = 3225184658;
 #[cfg(target_os = "linux")]
-pub const NIOTXSYNC: c_uint = 27028;
+pub const NIOCTXSYNC: c_uint = 27028;
 #[cfg(target_os = "linux")]
-pub const NIORXSYNC: c_uint = 27029;
+pub const NIOCRXSYNC: c_uint = 27029;
 #[cfg(target_os = "linux")]
 pub const NIOCCONFIG: c_ulong = 3239078294;
 
