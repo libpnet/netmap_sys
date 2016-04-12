@@ -1,6 +1,5 @@
-use libc::{c_int, c_uint, c_ulong, c_char, timeval, ssize_t};
+use libc::{c_int, c_uint, c_ulong, c_char, timeval, ssize_t, IF_NAMESIZE};
 
-pub const IF_NAMESIZE: usize = 16;
 pub const IFNAMSIZ: usize = IF_NAMESIZE;
 
 pub const NETMAP_API: c_int = 11;
