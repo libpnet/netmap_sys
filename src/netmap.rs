@@ -46,6 +46,7 @@ pub struct netmap_ring {
 
     pub ts: timeval,
 
+    _padding: [u8; 72],
     pub sem: [u8; 128], // FIXME  __attribute__((__aligned__(NM_CACHE_ALIGN)))
 
     pub slot: [netmap_slot; 0], // FIXME Check struct size/field alignment
