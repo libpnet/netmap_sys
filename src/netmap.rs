@@ -1,6 +1,5 @@
-use libc::{c_int, c_uint, c_ulong, c_char, timeval, ssize_t};
+use libc::{c_int, c_uint, c_ulong, c_char, timeval, ssize_t, IF_NAMESIZE};
 
-pub const IF_NAMESIZE: usize = 16;
 pub const IFNAMSIZ: usize = IF_NAMESIZE;
 
 pub const NETMAP_API: c_int = 11;
@@ -47,6 +46,7 @@ pub struct netmap_ring {
 
     pub ts: timeval,
 
+    _padding: [u8; 72],
     pub sem: [u8; 128], // FIXME  __attribute__((__aligned__(NM_CACHE_ALIGN)))
 
     pub slot: [netmap_slot; 0], // FIXME Check struct size/field alignment
@@ -78,8 +78,6 @@ pub struct netmap_if {
 }
 
 pub const NI_PRIV_MEM: c_int = 0x1;
-
-pub const SIZEOF_NR_NAME: usize = IFNAMSIZ;
 
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -142,9 +140,9 @@ pub const NIOCGINFO: c_ulong = 3225184657;
 #[cfg(target_os = "linux")]
 pub const NIOCREGIF: c_ulong = 3225184658;
 #[cfg(target_os = "linux")]
-pub const NIOTXSYNC: c_uint = 27028;
+pub const NIOCTXSYNC: c_uint = 27028;
 #[cfg(target_os = "linux")]
-pub const NIORXSYNC: c_uint = 27029;
+pub const NIOCRXSYNC: c_uint = 27029;
 #[cfg(target_os = "linux")]
 pub const NIOCCONFIG: c_ulong = 3239078294;
 
