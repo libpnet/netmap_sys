@@ -1,0 +1,15 @@
+[package]
+name = "netmap_test"
+version = "0.1.0"
+authors = ["Alexander Polyakov <apolyakov@beget.ru>"]
+build = "build.rs"
+
+[dependencies.netmap_sys]
+path = "../../netmap_sys"
+features = [ "netmap_with_libs" ]
+
+[dependencies]
+libc = "0.2"
+
+[build-dependencies]
+ctest = { git = "https://github.com/libpnet/ctest", branch = "nowerror" }
