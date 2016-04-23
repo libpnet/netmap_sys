@@ -17,12 +17,12 @@ pub struct netmap_slot {
     pub ptr: u64,
 }
 
-pub const NS_BUF_CHANGED: c_int = 0x0001;
-pub const NS_REPORT: c_int = 0x0002;
-pub const NS_FORWARD: c_int = 0x0004;
-pub const NS_NO_LEARN: c_int = 0x0008;
-pub const NS_INDIRECT: c_int = 0x0010;
-pub const NS_MOREFRAG: c_int = 0x0020;
+pub const NS_BUF_CHANGED: u16 = 0x0001;
+pub const NS_REPORT: u16 = 0x0002;
+pub const NS_FORWARD: u16 = 0x0004;
+pub const NS_NO_LEARN: u16 = 0x0008;
+pub const NS_INDIRECT: u16 = 0x0010;
+pub const NS_MOREFRAG: u16 = 0x0020;
 
 pub const NS_PORT_SHIFT: c_int = 8;
 pub const NS_PORT_MASK: c_int = (0xff << NS_PORT_SHIFT);
@@ -58,8 +58,8 @@ impl Clone for netmap_ring {
     }
 }
 
-pub const NR_TIMESTAMP: c_int = 0x0002;
-pub const NR_FORWARD: c_int = 0x0004;
+pub const NR_TIMESTAMP: u32 = 0x0002;
+pub const NR_FORWARD: u32 = 0x0004;
 
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -124,16 +124,22 @@ pub const NETMAP_BDG_HOST: c_int = 1;
 
 pub const NR_REG_MASK: c_int = 0xf;
 
-pub const NR_REG_DEFAULT: c_int = 0;
-pub const NR_REG_ALL_NIC: c_int = 1;
-pub const NR_REG_SW: c_int = 2;
-pub const NR_REG_NIC_SW: c_int = 3;
-pub const NR_REG_ONE_NIC: c_int = 4;
-pub const NR_REG_PIPE_MASTER: c_int = 5;
-pub const NR_REG_PIPE_SLAVE: c_int = 6;
+pub const NR_REG_DEFAULT: u32 = 0;
+pub const NR_REG_ALL_NIC: u32 = 1;
+pub const NR_REG_SW: u32 = 2;
+pub const NR_REG_NIC_SW: u32 = 3;
+pub const NR_REG_ONE_NIC: u32 = 4;
+pub const NR_REG_PIPE_MASTER: u32 = 5;
+pub const NR_REG_PIPE_SLAVE: u32 = 6;
 
-pub const NR_MONITOR_TX: c_int = 0x100;
-pub const NR_MONITOR_RX: c_int = 0x200;
+pub const NR_MONITOR_TX: u32 = 0x100;
+pub const NR_MONITOR_RX: u32 = 0x200;
+pub const NR_ZCOPY_MON: u32 = 0x400;
+pub const NR_EXCLUSIVE: u32 = 0x800;
+pub const NR_PTNETMAP_HOST: u32 = 0x1000;
+pub const NR_RX_RINGS_ONLY: u32 = 0x2000;
+pub const NR_TX_RINGS_ONLY: u32 = 0x4000;
+pub const NR_ACCEPT_VNET_HDR: u32 = 0x8000;
 
 #[cfg(target_os = "linux")]
 pub const NIOCGINFO: c_ulong = 3225184657;
