@@ -5,7 +5,7 @@ authors = ["Alexander Polyakov <apolyakov@beget.ru>"]
 build = "build.rs"
 
 [dependencies.netmap_sys]
-path = "../../netmap_sys"
+path = ".."
 features = [ "netmap_with_libs" ]
 
 [dependencies]
