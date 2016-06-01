@@ -9,7 +9,7 @@ To use within your own project, add:
 
 ```
 [dependencies.netmap_sys]
-version = "0.1.0"
+version = "0.1.1"
 # Uncomment this line where you wish to use features guarded by the
 # NETMAP_WITH_LIBS macro in C.
 #features = "netmap_with_libs"
@@ -29,9 +29,7 @@ error: could not find native static library `rust_netmap_user`, perhaps an -L fl
 
 You should check the following things:
 
- 1. You have clang installed
-    * If you do not have clang installed, and do not wish to, you can modify
-      `build.rs` to use gcc instead (untested, but it should work).
+ 1. You have gcc / clang installed
  2. Make sure that `/usr/include/net/netmap.h` and
     `/usr/include/net/netmap_user.h` both exist. If they do not, you should
     check your netmap installation. You can either manually add these files or
