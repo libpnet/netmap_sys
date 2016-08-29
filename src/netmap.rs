@@ -152,6 +152,17 @@ pub const NIOCRXSYNC: c_uint = 27029;
 #[cfg(target_os = "linux")]
 pub const NIOCCONFIG: c_ulong = 3239078294;
 
+#[cfg(target_os = "freebsd")]
+pub const NIOCGINFO: c_ulong = 3225184657;
+#[cfg(target_os = "freebsd")]
+pub const NIOCREGIF: c_ulong = 3225184658;
+#[cfg(target_os = "freebsd")]
+pub const NIOCTXSYNC: c_uint = 536897940;
+#[cfg(target_os = "freebsd")]
+pub const NIOCRXSYNC: c_uint = 536897941;
+#[cfg(target_os = "freebsd")]
+pub const NIOCCONFIG: c_ulong = 3239078294;
+
 #[inline(always)]
 pub unsafe fn nm_ring_empty(ring: *mut netmap_ring) -> bool {
     (*ring).cur == (*ring).tail
