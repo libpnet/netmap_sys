@@ -9,7 +9,7 @@ To use within your own project, add:
 
 ```
 [dependencies.netmap_sys]
-version = "0.1.1"
+version = "0.1.2"
 # Uncomment this line where you wish to use features guarded by the
 # NETMAP_WITH_LIBS macro in C.
 #features = "netmap_with_libs"
