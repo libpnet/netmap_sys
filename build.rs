@@ -12,7 +12,12 @@ fn main() {
         let tmp_path = Path::new(&out_dir).join("netmap.c");
         let mut tmp = fs::File::create(&tmp_path).unwrap();
 
-        tmp.write_all(b"#include <net/netmap_user.h>\n").unwrap();
+        tmp.write_all(b"#include <sys/time.h>\n\
+                        #include <errno.h>\n\
+                        typedef unsigned int u_int;
+                        typedef unsigned long u_long;
+                        typedef unsigned char u_char;
+                        #include <net/netmap_user.h>\n").unwrap();
         gcc::Config::new()
             .file(&tmp_path)
             .define("NETMAP_WITH_LIBS", None)
