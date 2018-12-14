@@ -165,7 +165,7 @@ pub const NIOCCONFIG: c_ulong = 3239078294;
 
 #[inline(always)]
 pub unsafe fn nm_ring_empty(ring: *mut netmap_ring) -> bool {
-    (*ring).cur == (*ring).tail
+    (*ring).head == (*ring).tail
 }
 
 pub const NM_IFRDATA_LEN: usize = 256;
