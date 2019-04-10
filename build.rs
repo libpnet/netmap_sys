@@ -1,6 +1,6 @@
 // netmap doesn't provide these functions as a library, so we cheat, to save porting them manually
 // to Rust. This is a very ugly hack.
-extern crate gcc;
+extern crate cc;
 use std::env;
 use std::io::prelude::*;
 use std::fs;
@@ -18,7 +18,7 @@ fn main() {
                         typedef unsigned long u_long;
                         typedef unsigned char u_char;
                         #include <net/netmap_user.h>\n").unwrap();
-        gcc::Config::new()
+        cc::Build::new()
             .file(&tmp_path)
             .define("NETMAP_WITH_LIBS", None)
             .define("static", Some(""))
