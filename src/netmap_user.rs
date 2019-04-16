@@ -56,7 +56,7 @@ pub unsafe fn nm_ring_next(r: *mut netmap_ring, i: u32) -> u32 {
 
 #[inline(always)]
 pub unsafe fn nm_ring_space(ring: *mut netmap_ring) -> u32 {
-    let mut ret: c_int = ((*ring).tail - (*ring).cur) as c_int;
+    let mut ret: c_int = ((*ring).tail - (*ring).head) as c_int;
     if ret < 0 {
         ret += (*ring).num_slots as c_int;
     }
