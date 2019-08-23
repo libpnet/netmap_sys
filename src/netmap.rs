@@ -2,8 +2,8 @@ use libc::{c_int, c_uint, c_ulong, c_char, timeval, ssize_t, IF_NAMESIZE};
 
 pub const IFNAMSIZ: usize = IF_NAMESIZE;
 
-pub const NETMAP_API: c_int = 11;
-pub const NETMAP_MIN_API: c_int = 11;
+pub const NETMAP_API: c_int = 14;
+pub const NETMAP_MIN_API: c_int = 14;
 pub const NETMAP_MAX_API: c_int = 15;
 
 pub const NM_CACHE_ALIGN: c_int = 128;
