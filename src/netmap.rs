@@ -1,4 +1,4 @@
-use libc::{c_int, c_uint, c_ulong, c_char, timeval, ssize_t, IF_NAMESIZE};
+use libc::{c_int, c_uint, c_ulong, c_char, timeval, ssize_t, size_t, IF_NAMESIZE};
 
 pub const IFNAMSIZ: usize = IF_NAMESIZE;
 
@@ -85,7 +85,7 @@ pub struct nmreq {
     pub nr_name: [c_char; IFNAMSIZ],
     pub nr_version: u32,
     pub nr_offset: u32,
-    pub nr_memsize: u32,
+    pub nr_memsize: size_t,
     pub nr_tx_slots: u32,
     pub nr_rx_slots: u32,
     pub nr_tx_rings: u16,
