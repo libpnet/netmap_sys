@@ -8,7 +8,7 @@ use netmap_util::{unlikely};
 pub use netmap_with_libs::{nm_pkthdr, nm_stat, nm_desc, P2NMD, IS_NETMAP_DESC, NETMAP_FD,
                            nm_pkt_copy, nm_cb_t, NM_OPEN_NO_MMAP, NM_OPEN_IFNAME, NM_OPEN_ARG1,
                            NM_OPEN_ARG2, NM_OPEN_ARG3, NM_OPEN_RING_CFG, nm_open, nm_close,
-                           nm_inject, nm_dispatch, nm_nextpkt};
+                           nm_inject, nm_dispatch, nm_nextpkt, nm_mmap};
 
 
 #[inline(always)]
@@ -31,7 +31,10 @@ pub unsafe fn NETMAP_TXRING(nifp: *mut netmap_if, index: isize) -> *mut netmap_r
 #[inline(always)]
 pub unsafe fn NETMAP_RXRING(nifp: *mut netmap_if, index: isize) -> *mut netmap_ring {
     let ptr = (&mut (*nifp).ring_ofs as *mut [isize; 0]) as *mut isize;
-    _NETMAP_OFFSET(nifp, *(ptr.offset(index + (*nifp).ni_tx_rings as isize + 1) as *mut isize))
+    let rr = &mut (*nifp).ni_tx_rings;
+    let r = *rr as isize;
+    let a = index + r + 1;
+    _NETMAP_OFFSET(nifp, *(ptr.offset(a) as *mut isize))
 }
 
 #[inline(always)]

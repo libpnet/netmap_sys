@@ -72,7 +72,9 @@ pub struct netmap_if {
     pub ni_rx_rings: u32,
 
     pub ni_bufs_head: u32,
-    pub ni_spare1: [u32; 5],
+    pub	ni_host_tx_rings: u32, /* number of SW tx rings */
+    pub	ni_host_rx_rings: u32, /* number of SW tx rings */
+    pub ni_spare1: [u32; 3],
 
     pub ring_ofs: [ssize_t; 0], // FIXME Check this is right, see above
 }
@@ -85,7 +87,7 @@ pub struct nmreq {
     pub nr_name: [c_char; IFNAMSIZ],
     pub nr_version: u32,
     pub nr_offset: u32,
-    pub nr_memsize: size_t,
+    pub nr_memsize: u32,
     pub nr_tx_slots: u32,
     pub nr_rx_slots: u32,
     pub nr_tx_rings: u16,
