@@ -30,7 +30,7 @@ pub struct nm_desc {
     pub self_: *mut nm_desc,
     pub fd: c_int,
     pub mem: *mut c_void,
-    pub memsize: u32,
+    pub memsize: u64,
     pub done_mmap: c_int,
     pub nifp: *mut netmap_if,
     pub first_tx_ring: u16,
@@ -118,6 +118,7 @@ extern {
     pub fn nm_inject(d: *mut nm_desc, buf: *const c_void, size: size_t) -> c_int;
     pub fn nm_dispatch(d: *mut nm_desc, cnt: c_int, cb: nm_cb_t, arg: *mut c_uchar) -> c_int;
     pub fn nm_nextpkt(d: *mut nm_desc, hdr: *mut nm_pkthdr) -> *mut c_uchar;
+    pub fn nm_mmap(d: *mut nm_desc, p: *const nm_desc) -> c_int;
 }
 
 #[test]
