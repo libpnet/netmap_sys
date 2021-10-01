@@ -1,11 +1,24 @@
 language: rust
-cache:
-    directories:
-        - $HOME/.cargo
-rust:
-    - stable
-    - beta
-    - nightly
+matrix:
+  include:
+    - os: linux
+      rust: stable
+      env: TARGET=x86_64-unknown-linux-gnu
+    - os: linux
+      rust: beta
+      env: TARGET=x86_64-unknown-linux-gnu
+    - os: linux
+      rust: nightly
+      env: TARGET=x86_64-unknown-linux-gnu
+    - os: linux
+      rust: stable
+      env: TARGET=x86_64-unknown-linux-musl
+    - os: linux
+      rust: beta
+      env: TARGET=x86_64-unknown-linux-musl
+    - os: linux
+      rust: nightly
+      env: TARGET=x86_64-unknown-linux-musl
 notifications:
     irc:
         channels:
@@ -14,5 +27,7 @@ notifications:
 script:
   - |
       git clone --depth=1 https://github.com/luigirizzo/netmap &&
-      cargo build --verbose && cargo test --verbose &&
-      cargo build --features netmap_with_libs && cargo test --features netmap_with_libs
+      cargo build --target=$TARGET --verbose &&
+      cargo test --target=$TARGET --verbose &&
+      cargo build --target=$TARGET --features netmap_with_libs &&
+      cargo test --target=$TARGET --features netmap_with_libs
